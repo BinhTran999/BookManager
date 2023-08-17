@@ -1,0 +1,28 @@
+services:
+  minio:
+    image: minio/minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+#    volumes:
+#      - ./minio_data:/data
+    environment:
+      - MINIO_ROOT_USER=user
+      - MINIO_ROOT_PASSWORD=password
+      - MINIO_REGION=us-east-1
+    command: server --console-address ":9001" /data
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass password
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+#    volumes:
+#      - db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

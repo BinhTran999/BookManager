@@ -29,4 +29,7 @@ public class Genre extends MDMAEntity {
 
     @ManyToMany
     private List<Book> books;
+
+    @ManyToMany
+    private List<Author> authors;
 }

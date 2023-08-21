@@ -17,6 +17,7 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 @Service
 public class AccountService extends BaseService<
@@ -39,12 +40,7 @@ public class AccountService extends BaseService<
             throw new InvalidPasswordFormatException("Mật khẩu cần có kí tự chữ hoa, chữ thường, chữ số và không có kí tự đặc biệt. Vui lòng nhập lại");
         }
         ResponseEntity response = super.create(request);
-        int length = request.getPassword().length();
-        StringBuilder asterisks = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            asterisks.append("*");
-        }
-        response.setPassword(asterisks.toString());
+        response.setPassword(asterisks(request.getPassword()));
         return response;
     }
 
@@ -62,9 +58,23 @@ public class AccountService extends BaseService<
     public BasePage<ResponseEntity> search(SearchEntity searchRequest) {
         String keyword = searchRequest.getKeyword();
         Integer status = searchRequest.getStatus();
-        return this.map(searchUtil
+        BasePage<ResponseEntity> entity = this.map(searchUtil
                 .likeOrLikeWithoutSensitiveCase(keyword, "code", "name")
                 .findStatus(status)
                 .build(searchRequest));
+//        List<ResponseEntity> resList = entity.getData();
+        for (ResponseEntity res : entity.getData()){
+            res.setPassword(asterisks(res.getPassword()));
+        }
+        return entity;
+    }
+
+    private String asterisks(String pass){
+        int length = pass.length();
+        StringBuilder asterisks = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            asterisks.append("*");
+        }
+        return asterisks.toString();
     }
 }

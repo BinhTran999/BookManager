@@ -13,6 +13,7 @@ public interface Endpoints {
     String DOWNLOAD_FILE = "/download-file";    // Request link
     String GET_ALL_PATH = "/get-all";
     String CREATE_PATH = "/";
+    String CHANGE_PASSWORD = "/change-password";
     String UPDATE_PATH = PATH_VARIABLE_ID;
     String DELETE_PATH = PATH_VARIABLE_ID;
     String DETAIL_PATH = PATH_VARIABLE_ID;

@@ -92,6 +92,7 @@ public abstract class BaseService<
     @Cacheable(key = "#listRequest", cacheResolver = "cacheResolver")
     public BasePage<RES_ENTITY> getAll(REQ_LIST_ALL listRequest) {
         Page<ENTITY> page = repository.findAll(FilterDataUtil.buildPageRequest(listRequest));
+        System.out.println(page);
         return this.map(page);
     }
 

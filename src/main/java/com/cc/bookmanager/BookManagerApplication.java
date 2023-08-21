@@ -18,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 //@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
 @EnableAsync
+
 @OpenAPIDefinition(servers = {@Server(url = "${openapi.oauth-flow.server-url}")})
 @SecurityScheme(name = "Auth Provider", type = SecuritySchemeType.OAUTH2, flows = @OAuthFlows(clientCredentials = @OAuthFlow(authorizationUrl = "${openapi.oauth-flow.auth-url}", tokenUrl = "${openapi.oauth-flow.token-url}")))
 

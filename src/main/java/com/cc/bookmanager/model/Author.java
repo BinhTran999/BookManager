@@ -4,16 +4,16 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import java.util.UUID;
 
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
-@Data
-@Entity
-@Table(name = "authors", schema = "bookstory")
+import java.util.Date;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
+@Entity(name = "authors")
+@Table(name = "authors", schema = "public")
 public class Author extends MDMAEntity {
 
     @Column(name = "gender")
@@ -27,4 +27,18 @@ public class Author extends MDMAEntity {
 
     @Column(name = "serial")
     private Integer serial;
+
+    @Column(name = "date")
+    private Date birthday;
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "gender=" + gender +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", serial=" + serial +
+                ", birthday=" + birthday +
+                '}';
+    }
 }

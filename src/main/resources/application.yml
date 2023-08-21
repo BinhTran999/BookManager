@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8082
 
 spring:
   application:
@@ -14,10 +14,18 @@ spring:
     validation-query: select 1
     test-on-borrow: true
   jpa:
-    hibernate.dialect: "org.hibernate.dialect.PostgreSQL95Dialect"
-    generate-ddl: false
+#    naming:
+#      physical-strategy=org:
+#        hibernate:
+#          boot:
+#            model:
+#              naming:
+#                PhysicalNamingStrategyStandardImpl:
+#    hibernate.platform: "org.hibernate.dialect.PostgreSQL95Dialect"
+
+    generate-ddl: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         jdbc:
@@ -34,7 +42,7 @@ spring:
   cache:
     type: redis
     redis:
-      time-to-live: 30
+      time-to-live: 300
       cache-null-values: false
     data:
       redis:

@@ -33,7 +33,8 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public ApiBaseResponse globalExceptionHandler(Exception ex, WebRequest request) {
-        return new ApiBaseResponse(EXTERNAL_SERVICE_SERVER_ERROR.getCode(), EXTERNAL_SERVICE_SERVER_ERROR.getDetail());
+    public String globalExceptionHandler(Exception ex, WebRequest request) {
+//        return new ApiBaseResponse(EXTERNAL_SERVICE_SERVER_ERROR.getCode(), EXTERNAL_SERVICE_SERVER_ERROR.getDetail());
+        return ex.getMessage();
     }
 }

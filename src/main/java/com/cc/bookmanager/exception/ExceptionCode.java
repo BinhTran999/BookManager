@@ -13,7 +13,8 @@ public enum ExceptionCode {
     TOKEN_EXPIRED("MDS-004", "Token expired"),
     FORBIDDEN("MDS-005", "Forbidden"),
     UNAUTHORIZED("MDS-006", "UNAUTHORIZED"),
-    ERR_MAX_UPLOAD_SIZE("MDS-007", "Max upload size file invalid"), CODE_EXISTED("MDS-008", "Code existed");
+    ERR_MAX_UPLOAD_SIZE("MDS-007", "Max upload size file invalid"), CODE_EXISTED("MDS-008", "Code existed"),
+    EMAIL_INVALID("MDS-009", "Email invalid"), PASSWORD_INVALID("MDS-010", "Password invalid");
     private final String code;
     private final String detail;
 }

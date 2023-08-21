@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,11 +18,13 @@ public class RequestEntity extends ApiBaseRequest {
 
     private String code;
 
-    private String sex;
+    private String gender;
 
     private String password;
 
     private String email;
+
+    private Date birthday;
 
 
     private Integer serial;

@@ -1,20 +1,15 @@
 package com.cc.bookmanager.model;
 
-import com.cc.bookmanager.model.MDMAEntity;
-import jakarta.persistence.GenerationType;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
 //No libraries found for 'javax.persistence.Column
 import jakarta.persistence.*;
-import java.io.Serializable;
-import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users", schema = "bookstory")
+@Table(name = "users", schema = "public")
 public class Account extends MDMAEntity {
 
     @Column(name = "name")
@@ -32,4 +27,16 @@ public class Account extends MDMAEntity {
     @Column(name = "status")
     private Integer status;
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", gender=" + gender +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", serial=" + serial +
+                ", status=" + status +
+                '}';
+    }
 }

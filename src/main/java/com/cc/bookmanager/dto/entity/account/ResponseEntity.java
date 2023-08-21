@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.UUID;
 @Getter
 @Setter
@@ -17,12 +18,12 @@ public class ResponseEntity extends BaseDto {
 
     private String code;
 
-    private String sex;
+    private String gender;
 
     private String password;
 
     private String email;
-
+    private Date birthday;
 
     private Integer serial;
 

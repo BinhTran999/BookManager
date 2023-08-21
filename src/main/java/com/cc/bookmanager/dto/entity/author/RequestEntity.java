@@ -5,15 +5,29 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestEntity extends ApiBaseRequest {
 
-    private String sex;
+    private Integer gender;
     private String name;
     private String code;
-    private String nation;
     private Integer serial;
+    private Date birthday;
+
+    @Override
+    public String toString() {
+        return "RequestEntity{" +
+                "gender=" + gender +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", serial=" + serial +
+                ", birthday=" + birthday +
+                '}';
+    }
 }

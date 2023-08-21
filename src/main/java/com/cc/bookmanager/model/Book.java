@@ -2,16 +2,14 @@ package com.cc.bookmanager.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.GenericGenerator;
-import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "books")
+@Table(name = "books", schema = "public")
 public class Book extends MDMAEntity {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)

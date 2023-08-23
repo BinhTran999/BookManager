@@ -3,6 +3,7 @@ package com.cc.bookmanager.service;
 import com.cc.bookmanager.dto.base.simple.request.ApiListBaseRequest;
 import com.cc.bookmanager.dto.base.simple.response.BasePage;
 import com.cc.bookmanager.dto.entity.account.RequestEntity;
+import com.cc.bookmanager.dto.entity.account.RequestPasswordEntity;
 import com.cc.bookmanager.dto.entity.account.ResponseEntity;
 import com.cc.bookmanager.dto.entity.account.SearchEntity;
 import com.cc.bookmanager.exception.ExistedException;
@@ -17,7 +18,10 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 @Service
 public class AccountService extends BaseService<
@@ -70,11 +74,55 @@ public class AccountService extends BaseService<
     }
 
     private String asterisks(String pass){
-        int length = pass.length();
+        int length = 8;
         StringBuilder asterisks = new StringBuilder();
         for (int i = 0; i < length; i++) {
             asterisks.append("*");
         }
         return asterisks.toString();
+    }
+
+    @SneakyThrows
+    //@Override
+    @Transactional
+    public void updatePassword(UUID id, RequestPasswordEntity passwordEntity){
+        uniqueValidator.checkIdExist(id);
+        if (checkPass(passwordEntity.getOldPass())){
+            Account acc = repository.getReferenceById(id);
+            acc.setPassword(passwordEntity.getNewPass());
+        }
+    }
+
+    private Boolean checkPass(String oldPass){
+        List<Account> accList = repository.findAll();
+        for (Account acc : accList){
+            if (Objects.equals(hashPassword(acc.getPassword()), hashPassword(oldPass))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static String hashPassword(String password) {
+        try {
+            // Create MessageDigest instance for SHA-256
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+            // Add password bytes to digest
+            md.update(password.getBytes());
+
+            // Get the hash's bytes
+            byte[] hashBytes = md.digest();
+
+            // Convert the hash bytes to a hexadecimal representation
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -20,6 +20,7 @@ public class ResponseEntity extends BaseDto {
     private UUID id;
     private Date createDate;
     private String bookName;
+    private String code;
     private List<Author> authors;
     private List<Genre> genreList;
     private String content;

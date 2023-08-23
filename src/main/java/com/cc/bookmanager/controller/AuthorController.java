@@ -17,7 +17,7 @@ import static com.cc.bookmanager.controller.Endpoints.PREFIX;
 
 @RestController
 @RequestMapping(PREFIX + "tac-gia")
-@Tag(name = "Danh mục chức vụ", description = "Danh mục chức vụ APIs")
+@Tag(name = "Danh sách tài khoản", description = "Danh sách chức vụ APIs")
 public class AuthorController extends BaseController<
         Author, RequestEntity, SearchEntity, ApiListBaseRequest, ResponseEntity, UUID, AuthorMapper, AuthorRepository, AuthorService
         > {

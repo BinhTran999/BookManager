@@ -15,4 +15,5 @@ public class RequestEntity extends ApiBaseRequest {
     private String name;
     private String code;
     private String note;
+    private String serial;
 }

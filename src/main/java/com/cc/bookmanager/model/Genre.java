@@ -27,6 +27,9 @@ public class Genre extends MDMAEntity {
     @Column(name = "note")
     private String note;
 
+    @Column(name = "serial")
+    private String serial;
+
     @ManyToMany
     private List<Book> books;
 

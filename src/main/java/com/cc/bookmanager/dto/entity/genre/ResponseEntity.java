@@ -17,4 +17,5 @@ public class ResponseEntity extends BaseDto {
     private String name;
     private String code;
     private String note;
+    private String serial;
 }

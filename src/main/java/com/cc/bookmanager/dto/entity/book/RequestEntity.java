@@ -16,9 +16,11 @@ public class RequestEntity  extends ApiBaseRequest {
 
     private Date createDate;
     private String bookName;
+    private String code;
     private String author;
     private String genre;
     private String content;
     private Integer serial;
     private UUID parentId;
+    private String publisher;
 }

@@ -4,6 +4,8 @@ import lombok.*;
 //No libraries found for 'javax.persistence.Column
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -26,6 +28,9 @@ public class Account extends MDMAEntity {
     private Integer serial;
     @Column(name = "status")
     private Integer status;
+
+    @Column(name = "birthday")
+    private Date birthday;
 
     @Override
     public String toString() {

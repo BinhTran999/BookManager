@@ -33,7 +33,7 @@ public class AccountController extends BaseController<
         super(service);
     }
 
-    @RequestMapping(value = UPDATE_PATH, method = RequestMethod.PUT)
+    @RequestMapping(value = UPDATE_PATH + "/new-pass", method = RequestMethod.PUT)
     public ApiBaseResponse updatePassword(@PathVariable @ValidUUID UUID uuid, @RequestBody RequestPasswordEntity reqUpdate) {
         service.updatePassword(uuid, reqUpdate);
         return apiResponseBuilder.success();
